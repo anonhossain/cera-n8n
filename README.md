@@ -4,7 +4,7 @@ A high-performance, asynchronous automation engine designed to bridge the gap be
 
 ---
 
-## 📸 System Architecture
+## System Architecture
 
 The logic is built using an event-driven approach to handle real-time emergency routing and user state management.
 
@@ -24,7 +24,10 @@ Designing a real-time crisis-response system to route emergency reports from res
     * **Gmail API:** Automated high-priority alerts to administrative stakeholders.
 * **Complex Logic:** Implemented conditional routing to map metadata to block-specific triggers, ensuring zero-loss reporting.
 
-## 📈 Result & Impact
+## Result & Impact
+
+![Workflow Screenshot](./asset/output.png)
+
 * **Zero-Latency Dispatching:** Eliminated manual reporting delays by routing incidents to authorities in under 2 seconds.
 * **Natural Interaction:** Replaced rigid input forms with a "WhatsApp-style" conversational flow.
 * **Scalable Pipeline:** Established a modular architecture capable of automated identity verification and rapid deployment to new geographical zones.
