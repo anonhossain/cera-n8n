@@ -1,0 +1,708 @@
+{
+  "name": "Notification",
+  "nodes": [
+    {
+      "parameters": {
+        "chatId": "={{ $(\"Telegram Trigger\").item.json.message.chat.id }}",
+        "text": "=✅ Registration completed successfully!\n\nUID: {{ $(\"Prepare Registration Data\").item.json.UID }}\nName: {{ $(\"Prepare Registration Data\").item.json.FirstName }} {{ $(\"Prepare Registration Data\").item.json.LastName }}\nBlock: {{ $(\"Prepare Registration Data\").item.json.Block }}\nHouse: {{ $(\"Prepare Registration Data\").item.json.House }}\nFlat: {{ $(\"Prepare Registration Data\").item.json.Flat }}\nPhone: {{ $(\"Prepare Registration Data\").item.json.Phone }}",
+        "additionalFields": {}
+      },
+      "id": "e1152db5-0ca7-45b8-a5e7-490200794ec2",
+      "name": "Confirm Registration",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1360,
+        208
+      ],
+      "webhookId": "c6c0d0a9-86af-4b28-ab1c-c5c5755ba66d",
+      "credentials": {
+        "telegramApi": {
+          "id": "AZGRy4BeDaLMBJsb",
+          "name": "sc_776"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1cdYtlqrHg7kYA13cm5iW1fDOt0vVr9QEZIbl3mkHakQ",
+          "mode": "list",
+          "cachedResultName": "Users",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cdYtlqrHg7kYA13cm5iW1fDOt0vVr9QEZIbl3mkHakQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Userlist",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cdYtlqrHg7kYA13cm5iW1fDOt0vVr9QEZIbl3mkHakQ/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "UID",
+              "displayName": "UID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "FirstName",
+              "displayName": "FirstName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "LastName",
+              "displayName": "LastName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Block",
+              "displayName": "Block",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "House",
+              "displayName": "House",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Flat",
+              "displayName": "Flat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "update_id",
+              "displayName": "update_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "d3df0f97-77fa-437e-8557-eb67018596f0",
+      "name": "Save to Google Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1136,
+        208
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ZobEDgbQ1KXlNGcX",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "UID",
+              "value": "={{ $(\"Telegram Trigger\").item.json.message.from.id }}",
+              "type": "string"
+            },
+            {
+              "id": "2",
+              "name": "FirstName",
+              "value": "={{ $(\"Collect Registration Form\").item.json.data.FirstName }}",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "LastName",
+              "value": "={{ $(\"Collect Registration Form\").item.json.data.LastName }}",
+              "type": "string"
+            },
+            {
+              "id": "4",
+              "name": "Block",
+              "value": "={{ $(\"Collect Registration Form\").item.json.data.Block }}",
+              "type": "string"
+            },
+            {
+              "id": "5",
+              "name": "House",
+              "value": "={{ $(\"Collect Registration Form\").item.json.data.House }}",
+              "type": "string"
+            },
+            {
+              "id": "6",
+              "name": "Flat",
+              "value": "={{ $(\"Collect Registration Form\").item.json.data.Flat }}",
+              "type": "string"
+            },
+            {
+              "id": "7",
+              "name": "Phone",
+              "value": "={{ $(\"Collect Registration Form\").item.json.data.Phone }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "21acec66-0f52-4ef1-9e77-640ee7caddd5",
+      "name": "Prepare Registration Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        912,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "id": "4e8a1027-245e-4b9b-8581-ad2b6e021ef7",
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        304
+      ],
+      "webhookId": "1bb418f1-38cf-46f1-913d-0971fd2c88cf",
+      "credentials": {
+        "telegramApi": {
+          "id": "AZGRy4BeDaLMBJsb",
+          "name": "sc_776"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.message.text }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              },
+              "rightValue": "/registration",
+              "id": "c8a2ef99-dc5e-43d1-8aef-4d67f142b9cd"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "55ca7085-c09a-4086-8011-455429031ffd",
+      "name": "Check if Registration Command",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        464,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "chatId": "={{ $json.message.chat.id }}",
+        "message": "Please enter your block (A, B, C, or Others):",
+        "responseType": "freeText",
+        "options": {}
+      },
+      "id": "6b472edf-641d-41ba-ae50-336af973cc3e",
+      "name": "Ask for Block Selection",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        688,
+        400
+      ],
+      "webhookId": "b924c880-2865-4e33-b48d-2a39815c0e57",
+      "credentials": {
+        "telegramApi": {
+          "id": "AZGRy4BeDaLMBJsb",
+          "name": "sc_776"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1cdYtlqrHg7kYA13cm5iW1fDOt0vVr9QEZIbl3mkHakQ",
+          "mode": "list",
+          "cachedResultName": "Users",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cdYtlqrHg7kYA13cm5iW1fDOt0vVr9QEZIbl3mkHakQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Userlist",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cdYtlqrHg7kYA13cm5iW1fDOt0vVr9QEZIbl3mkHakQ/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "UID",
+              "lookupValue": "={{ $(\"Telegram Trigger\").item.json.message.from.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c5228e40-67a7-4b6e-8911-36011888713a",
+      "name": "Get User from Userlist",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        912,
+        400
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ZobEDgbQ1KXlNGcX",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "chatId": "={{ $(\"Telegram Trigger\").item.json.message.chat.id }}",
+        "message": "Please enter your message:",
+        "responseType": "freeText",
+        "options": {}
+      },
+      "id": "8593607a-9993-4ff7-b923-e903ac568b90",
+      "name": "Ask for Message",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1136,
+        400
+      ],
+      "webhookId": "f5850523-90d6-48fa-a157-46d02b2c891c",
+      "credentials": {
+        "telegramApi": {
+          "id": "AZGRy4BeDaLMBJsb",
+          "name": "sc_776"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1cbiUZvzv-HzThrqGzlAnCZmI3y51QkL6z31XtX6Ay9A",
+          "mode": "list",
+          "cachedResultName": "BlockID",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cbiUZvzv-HzThrqGzlAnCZmI3y51QkL6z31XtX6Ay9A/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cbiUZvzv-HzThrqGzlAnCZmI3y51QkL6z31XtX6Ay9A/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Block",
+              "lookupValue": "={{ $(\"Ask for Block Selection\").item.json.data.text }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ac36329c-6109-4632-a346-09b40dcdb2d9",
+      "name": "Get Block Emails",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1360,
+        400
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ZobEDgbQ1KXlNGcX",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.emailList }}",
+        "subject": "=Message from Block {{ $(\"Ask for Block Selection\").item.json.data.text }}",
+        "message": "=First Name: {{ $('Get User from Userlist').item.json.FirstName }}<br>Last Name: {{ $('Get User from Userlist').item.json.LastName }}<br>House: {{ $('Get User from Userlist').item.json.House }}<br>Flat: {{ $('Get User from Userlist').item.json.Flat }}<br>Phone: {{ $('Get User from Userlist').item.json.Phone }}<br><br>Message: {{ $('Ask for Message').item.json.data.text }}",
+        "options": {}
+      },
+      "id": "fe21058d-c15f-4dd9-a4a9-56babfe30af9",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        2032,
+        400
+      ],
+      "webhookId": "8a053b6f-214a-404f-8cb8-76d861270934",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "OVQ3tzdRAkpXfW7o",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "=✅ Your message has been sent to Block {{ $(\"Ask for Block Selection\").item.json.data.text }} administrators.",
+        "additionalFields": {}
+      },
+      "id": "a0b45db6-b055-40d1-947b-88c83b12ae8c",
+      "name": "Confirm Email Sent",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2256,
+        400
+      ],
+      "webhookId": "d953eceb-095d-4bd6-beb3-f565c4765969",
+      "credentials": {
+        "telegramApi": {
+          "id": "AZGRy4BeDaLMBJsb",
+          "name": "sc_776"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "Email"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b28ba70f-1710-4705-99a6-1c4f30e8112f",
+      "name": "Aggregate Emails",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1584,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "emailList",
+              "value": "={{ $json.Email.join(\", \") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "331ef180-e8ad-4d9e-aa8f-237beedefe15",
+      "name": "Prepare Email Recipients",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1808,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "chatId": "={{ $json.message.chat.id }}",
+        "message": "Please fill in your registration details:",
+        "responseType": "customForm",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "FirstName",
+              "placeholder": "Enter your first name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "LastName",
+              "placeholder": "Enter your last name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Block",
+              "placeholder": "Enter your block",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "House",
+              "placeholder": "Enter your house number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Flat",
+              "placeholder": "Enter your flat number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Phone",
+              "placeholder": "Enter your phone number",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "eeba4181-e7c5-4d7d-a5be-b426ae495ba9",
+      "name": "Collect Registration Form",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        688,
+        208
+      ],
+      "webhookId": "015211a3-ea65-407f-81f7-5e881ee40b97",
+      "credentials": {
+        "telegramApi": {
+          "id": "AZGRy4BeDaLMBJsb",
+          "name": "sc_776"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Save to Google Sheet": {
+      "main": [
+        [
+          {
+            "node": "Confirm Registration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Registration Data": {
+      "main": [
+        [
+          {
+            "node": "Save to Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Check if Registration Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if Registration Command": {
+      "main": [
+        [
+          {
+            "node": "Collect Registration Form",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ask for Block Selection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ask for Block Selection": {
+      "main": [
+        [
+          {
+            "node": "Get User from Userlist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get User from Userlist": {
+      "main": [
+        [
+          {
+            "node": "Ask for Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ask for Message": {
+      "main": [
+        [
+          {
+            "node": "Get Block Emails",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Block Emails": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Emails",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Confirm Email Sent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Emails": {
+      "main": [
+        [
+          {
+            "node": "Prepare Email Recipients",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Email Recipients": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect Registration Form": {
+      "main": [
+        [
+          {
+            "node": "Prepare Registration Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "ef6706d0-9b7b-412c-92a7-0dd15f58ba6b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b92b85ccc6e88cd656552cea1d5e0e28c5ef57953154d2ad0dd0f8dd4158bec7"
+  },
+  "id": "gCJQz6Y9XXX25O4T",
+  "tags": []
+}
