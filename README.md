@@ -2,12 +2,6 @@
 
 A high-performance, asynchronous automation engine designed to bridge the gap between residents and administrative authorities during localized emergencies.
 
-## 🚀 Quick Start
-
-Click the button below to import this workflow directly into your n8n instance:
-
-[![Import to n8n](https://n8n.io/button.svg)](https://n8n.io/workflows/custom?code=https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/workflow/care_n8n.json)
-
 ---
 
 ## 📸 System Architecture
@@ -18,10 +12,10 @@ The logic is built using an event-driven approach to handle real-time emergency 
 
 ---
 
-## 🛡️ The Challenge
+## The Challenge
 Designing a real-time crisis-response system to route emergency reports from residents in three distinct blocks to the correct administrative authorities in real-time, moving away from rigid forms to a natural chat experience.
 
-## 🛠️ Technical Implementation
+## Technical Implementation
 * **Asynchronous Workflow:** Architected using **n8n** to handle event-driven processing with 100% uptime.
 * **Telegram Orchestration:** Integrated **Telegram Bot API** using `setcommands` for custom interaction and **Webhooks** for low-latency triggers.
 * **GCP Integration:** Connected **Google Cloud Platform** to automate the data lifecycle:
@@ -37,7 +31,7 @@ Designing a real-time crisis-response system to route emergency reports from res
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 ```text
 ├── asset/          # System architecture diagrams and screenshots
 └── workflow/       # Exported n8n .json workflow files
