@@ -1,1 +1,2 @@
-[![Import to n8n](https://n8n.io/button.svg)](https://n8n.io/workflows/custom?code=RAW_GITHUB_LINK_TO_JSON)
+## Workflow Preview
+![n8n Workflow Canvas](./asset/cera_n8n.png)
